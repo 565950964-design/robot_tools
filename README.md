@@ -70,28 +70,25 @@ $$\lambda_{eff} = \lambda_{base} \cdot (1 + \gamma \cdot \min(\|\mathbf{e}\|, 1.
 
 - High residual $\rightarrow$ increased damping (robustness in singularities)
 - Low residual $\rightarrow$ reduced damping (convergence accuracy)
-
 ### Null-Space Optimization
 
 For redundant manipulators ($n > 6$), project posture optimization into null space:
 
 $$\Delta \mathbf{q}_{null} = (\mathbf{I}_n - \mathbf{J}^\dagger \mathbf{J}) \cdot \mathbf{K}_{null} (\mathbf{q}_{ref} - \mathbf{q})$$
 
-Total update:
-$$
-\Delta \mathbf{q}_{total} = \Delta \mathbf{q}_{task} + \Delta \mathbf{q}_{null}
-$$
+**Total update:**
+$$\Delta \mathbf{q}_{total} = \Delta \mathbf{q}_{task} + \Delta \mathbf{q}_{null}$$
+
 This minimizes $\|\mathbf{q} - \mathbf{q}_{ref}\|$ without affecting end-effector pose.
 
 ### Reference Frames
 
 **LOCAL Mode:**
-- Error: $\mathbf{e}_{local} = \text{log}_6(\mathbf{T}_{current}^{-1} \mathbf{T}_{des})$
-- Jacobian: $\mathbf{J}_{local}$ (body twist representation)
-- Suitable for local adjustments
+* Error: $\mathbf{e}_{local} = \log_6(\mathbf{T}_{current}^{-1} \mathbf{T}_{des})$
+* Jacobian: $\mathbf{J}_{local}$ (body twist representation)
+* Suitable for local adjustments
 
 **WORLD Mode:**
-- Error: $\mathbf{e}_{world} = \text{Ad}_{\mathbf{T}_{current}} \cdot \mathbf{e}_{local}$
-- Jacobian: $\mathbf{J}_{world} = \text{Ad}_{\mathbf{T}_{current}} \cdot \mathbf{J}_{local}$
-- Suitable for global trajectory tracking
-```
+* Error: $\mathbf{e}_{world} = \text{Ad}_{\mathbf{T}_{current}} \cdot \mathbf{e}_{local}$
+* Jacobian: $\mathbf{J}_{world} = \text{Ad}_{\mathbf{T}_{current}} \cdot \mathbf{J}_{local}$
+* Suitable for global trajectory tracking
