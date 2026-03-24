@@ -78,8 +78,9 @@ For redundant manipulators ($n > 6$), project posture optimization into null spa
 $$\Delta \mathbf{q}_{null} = (\mathbf{I}_n - \mathbf{J}^\dagger \mathbf{J}) \cdot \mathbf{K}_{null} (\mathbf{q}_{ref} - \mathbf{q})$$
 
 Total update:
-$$\Delta \mathbf{q}_{total} = \Delta \mathbf{q}_{task} + \Delta \mathbf{q}_{null}$$
-
+$$
+\Delta \mathbf{q}_{total} = \Delta \mathbf{q}_{task} + \Delta \mathbf{q}_{null}
+$$
 This minimizes $\|\mathbf{q} - \mathbf{q}_{ref}\|$ without affecting end-effector pose.
 
 ### Reference Frames
