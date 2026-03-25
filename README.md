@@ -9,7 +9,7 @@
 - NumPy, SciPy
 
 ```bash
-pip install pinocchio numpy scipy
+pip install pin numpy scipy
 ```
 
 ### Configuration
